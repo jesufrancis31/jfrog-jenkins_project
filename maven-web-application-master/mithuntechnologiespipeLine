@@ -1,0 +1,81 @@
+#!groovy
+
+properties([
+    buildDiscarder(logRotator(numToKeepStr: '3')),
+    pipelineTriggers([
+        pollSCM('H/1 * * * *')
+    ])
+])
+
+node {
+     echo "Current Build Absolute URL ${currentBuild.absoluteUrl}"
+     echo "Current Build Result ${currentBuild.currentResult}"
+    
+     def mvnHome =  tool name: 'M3_HOME', type: 'maven'   
+      
+    
+    cleanWs notFailBuild: true
+
+  
+  stage('Checkout the Code'){
+      git branch: 'development', credentialsId: 'dc9bee7b-a6ef-4ffd-a07b-7c97617a378a', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+  }
+  
+  stage('Build'){
+      
+      if(isUnix()){
+           sh "${mvnHome}/bin/mvn package"
+    // sh 'mvn clean package'
+      }else{
+     //bat 'mvn clean package'
+      }
+  }
+    /*
+  stage('SonarQubeReport'){
+      
+     if(isUnix()){
+     sh 'mvn sonar:sonar'
+      }else{
+     bat 'mvn sonar:sonar'
+      }  
+  }
+  
+  stage('Upload Artifacts into Nexus'){
+      
+     if(isUnix()){
+     sh 'mvn deploy'
+      }else{
+     bat 'mvn deploy'
+      }  
+  }
+  
+ 
+  
+  stage('Deploy the App into Tomcat Server')
+  {
+  
+  sh 'echo Deploy the app into tomcat server'
+  sh 'cp $WORKSPACE/target/maven-web-application.war /Users/bhaskarreddyl/BhaskarReddyL/Softwares/Running/apache-tomcat-9.0.14/mithunapps/' 
+  sh 'echo app deployed successfully'
+  }
+  stage('Send Email Notification'){
+      
+      mail bcc: 'devopstrainingblr@gmail.com', body: '''Build is done!!
+
+Regards,
+Mithun Technologies
+Martaha Halli
+Bangalore
+9980923226
+''', cc: 'devopstrainingblr@gmail.com', from: '', replyTo: '', subject: 'Build Done', to: 'devopstrainingblr@gmail.com'
+  }
+ 
+   */
+   stage ('Send Slack Notification')
+   {
+     slackSend baseUrl: 'https://devops-team-bangalore.slack.com/services/hooks/jenkins-ci/', channel: 'build-notification', message: '"Build Done"', tokenCredentialId: '193d10e7-9280-4629-84e8-5ec4a30b87b5' }
+ 
+}
+
+
+
