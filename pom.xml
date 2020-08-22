@@ -88,13 +88,13 @@
 	
 <distributionManagement>
     <repository>
-        <id>central</id>
+        <id>JfrogRepo</id>
         <name>ip-172-31-7-81-releases</name>
         <url>http://13.233.131.222:8081/artifactory/libs-release-local</url>
     </repository>
 
     <snapshotRepository>
-        <id>snapshots</id>
+        <id>JfrogRepo</id>
         <name>ip-172-31-7-81-snapshots</name>
         <url>http://13.233.131.222:8081/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
