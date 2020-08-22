@@ -88,14 +88,14 @@
 	
 	<distributionManagement>
 	    <repository>
-	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.233.113.232:8081/repository/mt-releases/</url>
+	      <id>jfrog</id>
+	      <name>Jfrog-ReleaseRepository</name>
+	      <url>http://13.233.131.222:8081/artifactory/libs-release-local/</url>
 	    </repository>
 	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.233.113.232:8081/repository/mt-snapshots/</url>
+	      <id>jfrog</id>
+	      <name>Jfrog-Snapshot Repository </name>
+	      <url>http://13.233.131.222:8081/artifactory/libs-snapshot-local</url>
 	    </snapshotRepository>
 	</distributionManagement>
 	
