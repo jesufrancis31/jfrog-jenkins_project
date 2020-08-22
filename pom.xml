@@ -93,7 +93,7 @@
         <url>http://13.233.131.222:8081/artifactory/libs-release-local</url>
     </repository>
 </distributionManagement>
-</distributionManagement>
+<distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
         <name>ip-172-31-7-81-snapshots</name>
