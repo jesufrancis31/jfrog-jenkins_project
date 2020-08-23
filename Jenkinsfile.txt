@@ -7,7 +7,7 @@ node{
     ])
 ])
 
- def mavenHome = tool name: 'maven3.6.0', type: 'maven'
+ def mavenHome = tool name: 'Maven_Latest', type: 'maven'
  
  stage('CheckoutCode') {
  git branch: 'master', credentialsId: '7ef842c1-5ab7-42f7-8009-61b075598acc', url: 'https://github.com/jesufrancis31/jfrog-jenkins_project.git'
